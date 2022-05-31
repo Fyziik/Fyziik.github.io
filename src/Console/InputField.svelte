@@ -5,20 +5,34 @@
 
   let value: string;
   export let pwd: string;
+  let cmdHistory: string[] = [];
+  let cmdHistoryCurrentIndex: number = -100;
 
   const onKeyPress = e => {
     if (e.key === 'Enter') {
+      cmdHistory.push(value)
       dispatch('enter', {cmd: value})
       value = ''
+      cmdHistoryCurrentIndex = cmdHistory.length
+    }
+
+    if (e.key === 'ArrowUp') {
+      if (cmdHistoryCurrentIndex > 0) cmdHistoryCurrentIndex--
+      value = cmdHistory[cmdHistoryCurrentIndex]
+    }
+
+    if (e.key === 'ArrowDown') {
+      if (cmdHistoryCurrentIndex < cmdHistory.length) cmdHistoryCurrentIndex++
+      value = cmdHistory[cmdHistoryCurrentIndex]
     }
   }
 
 </script>
 
-  <div class="pwd">
-    <p>{pwd}</p>
-    <input bind:value on:keypress={onKeyPress}/>
-  </div>
+<div class="pwd">
+  <p>{pwd}</p>
+  <input bind:value on:keydown={onKeyPress}/>
+</div>
   
   
   

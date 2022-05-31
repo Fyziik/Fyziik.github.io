@@ -1,22 +1,14 @@
 <script lang="ts">
   import InputField from './InputField.svelte'
   import Intro from './Intro.svelte'
+  import OutputWindow from './OutputWindow.svelte'
 
-  let pwd: string = "C:\\Users\\Fyziik:~$ "
-  let container;
+  let pwd: string = "C:\\Users\\Fyziik:~$ ";
+  let child;
 
   const onEnter = e => {
-    const lastCmd = pwd + ' ' + e.detail.cmd
-    //Create element & append
-    const tmp = document.createElement('p')
-    tmp.textContent = lastCmd
-    container.appendChild(tmp)
-
-    //Force scroll
-    let frame = document.getElementById('frame')
-    frame.scrollTop = frame.scrollHeight
+    child.onEnter(e)
   }
-
   
 </script>
 
@@ -24,9 +16,10 @@
 <div class="cover">
   <div class="frame" id="frame">
     <Intro/>
-    <div class="container" bind:this={container}></div>
+    <!--<div bind:this={container}></div>-->
+    <OutputWindow {pwd} bind:this={child}/>
   </div>
-  <InputField on:enter={onEnter} {pwd}/>
+  <InputField {pwd} on:enter={onEnter}/>
 </div>
 
   
@@ -57,19 +50,8 @@
     overflow: hidden;
   }
 
-  .cursor {
-    font-size: 12px;
-    height: 3em;
-    width: 10px;
-    display: inline-block;
-    background-color: #5f9980;
-    animation: blinker 1s linear infinite;
-  }
-
-  @keyframes blinker {
-    50% {
-      opacity: 0;
-    }
+  .frameCmd {
+    background-color: red;
   }
 
 </style>
