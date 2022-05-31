@@ -1,12 +1,12 @@
-<script>
-
+<script lang="ts">
+  export let code: string;
 </script>
 
 <main>
 
   <fieldset>
     <p>PREVIEW</p>
-    test
+    {@html code}
   </fieldset>
 
 </main>
@@ -15,6 +15,7 @@
   
   fieldset {
     background-color: #2C2F33;
+    border: none;
     margin: 0;
     color: green;
     text-align: left;

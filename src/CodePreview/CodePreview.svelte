@@ -1,26 +1,44 @@
 <script lang="ts">
   import Code from "./Code.svelte";
   import Preview from "./Preview.svelte";
+  import Input from "./Input.svelte";
 
   export let title: string = "Fieldset"
-  export let code: string = `
+  export let example: string = `
   <fieldset>
     <legend>TEXT PREVIEW</legend>
     <!-- forskellige dele af text preview -->
   </fieldset>
   `
+
+  let userInput: string;
+
 </script>
 
 
 <main>
 
-  <p id="title">{title}</p>
+  <Input onChange={newValue => userInput = newValue} />
+
+  <p class="title">{'User specified'}</p>
   <div class="row">
     <div class="column">
-      <Code {code}/>
+      <Code code={userInput}/>
     </div>
     <div class="column">
-      <Preview/>
+      <Preview code={userInput}/>
+    </div>
+  </div>
+
+  <div id="spacer">---------------------------------------------------------------------------------------</div>
+
+  <p class="title">{title}</p>
+  <div class="row">
+    <div class="column">
+      <Code code={example}/>
+    </div>
+    <div class="column">
+      <Preview code={example}/>
     </div>
   </div>
 
@@ -29,12 +47,19 @@
 
 <style>
 
-  #title {
+  .title {
     font-size: 40px;
-    margin: 0 0 0 5%;
+    margin: 0 0 1% 0;
     padding: 0;
     font-weight: bold;
-    text-align: left;
+    text-align: center;
+  }
+
+  #spacer {
+    width: 100%;
+    margin: 2% 0;
+    font-size: 50px;
+    font-weight: bold;
   }
 
   .row {
@@ -42,7 +67,8 @@
   }
 
   .column {
-    flex: 50%;
+    width: 40%;
+    margin: 0% 5%;
   }
 
 </style>

@@ -1,32 +1,18 @@
 <script lang="ts">
 	import CodePreview from "./CodePreview/CodePreview.svelte";
-
-	export let name: string = 'test world'
+	import Terminal from "./Console/Terminal.svelte";
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<CodePreview/>
-</main>
+<div class='terminal'>
+	<Terminal/>
+</div>
+<!--<CodePreview/>-->
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
+	
+	.terminal {
+		width: 100%;
+		height: 100%;
 	}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
 </style>

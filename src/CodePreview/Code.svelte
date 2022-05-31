@@ -6,7 +6,9 @@
 
   <fieldset>
     <p>CODE</p>
-    {code}
+    <pre>
+      {code}
+    </pre>
   </fieldset>
   
 </main>
@@ -15,6 +17,7 @@
 
   fieldset {
     background-color: #2C2F33;
+    border: none;
     margin: 0;
     color: green;
     text-align: left;
