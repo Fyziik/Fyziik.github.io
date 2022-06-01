@@ -3,11 +3,15 @@
   import Intro from './Intro.svelte'
   import OutputWindow from './OutputWindow.svelte'
 
-  let pwd: string = "C:\\Users\\Fyziik:~$ ";
+  let pwd: string;
   let child;
 
   const onEnter = e => {
     child.onEnter(e)
+  }
+
+  const onLs = e => {
+    child.onLs(e)
   }
   
 </script>
@@ -19,7 +23,7 @@
     <!--<div bind:this={container}></div>-->
     <OutputWindow {pwd} bind:this={child}/>
   </div>
-  <InputField {pwd} on:enter={onEnter}/>
+  <InputField bind:pwd={pwd} on:enter={onEnter} on:onLs={onLs}/>
 </div>
 
   
@@ -48,10 +52,6 @@
     background-position: bottom right;
     background-repeat: no-repeat;
     overflow: hidden;
-  }
-
-  .frameCmd {
-    background-color: red;
   }
 
 </style>

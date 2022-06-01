@@ -4,12 +4,96 @@
   const dispatch = createEventDispatcher()
 
   let value: string;
-  export let pwd: string;
+  export let pwd: string = "C:\\Users\\Fyziik:~$ ";
   let cmdHistory: string[] = [];
   let cmdHistoryCurrentIndex: number = -100;
+  let inSubject = false
+
+  const files = [
+    {
+      "subject": "Systemsikkerhed",
+      "topics": [
+        {
+          "name": "System Security Overview",
+          "link": "https://docs.google.com/presentation/d/1miEDvFc71jOwPiI345qGRrjKSHzH7Liz4Uut7RuGYPk/edit?usp=sharing"
+        },
+        {
+          "name": "System installation, hardening, monitoring & logging",
+          "link": "https://docs.google.com/presentation/d/1_xoBHzDVx9wHItEE8sTBrpGWcvY_P6If7FDfL4QqNPs/edit?usp=sharing"
+        }
+      ]
+    },
+    {
+      "subject": "Applied Cryptology",
+      "topics": [
+        {
+          "name": "idk yet",
+          "link": "www.google.com"
+        }
+      ]
+    }
+  ]
 
   const onKeyPress = e => {
     if (e.key === 'Enter') {
+      // pre handling for cd & ls
+      const userFile = value.substring(3, value.length)
+
+      // if cd
+      if (value.substring(0, 2) === 'cd') {
+        //Check level in file system
+        //lowest level, cd into subjects
+        if (!inSubject) {
+          pwd = pwd.substring(0, pwd.length - 4) + '\\' + files[userFile].subject + ':~$ ';
+          inSubject = true;
+          
+        } else if (inSubject && !value.includes('..')) { //higher level, already in a subject, cd into topics (open links), should make use of index numbers
+          let currentSubject = pwd.split(':')
+          currentSubject = currentSubject[1].split('\\')
+          const foundSubject = currentSubject[currentSubject.length - 1]
+          files.forEach(data => {
+            if (data.subject === foundSubject) {
+              window.open(data.topics[userFile].link, '_blank')
+            }
+          })
+        }
+
+        
+      }
+
+      // Going up a level in file system
+      if (value.substring(0, 5) === 'cd ..' && inSubject) {
+        let pathToSplit = pwd.split('\\')
+        pathToSplit.pop()
+        pwd = pathToSplit.join('\\') + ':~$ '
+        inSubject = false
+      }
+      
+
+      // if ls
+      if (value.substring(0, 2) === 'ls') {
+        let toSend = []
+        if (!inSubject) {
+          files.forEach(data => {
+            toSend.push(data.subject)
+          })
+        } else {
+          let currentSubject = pwd.split(':')
+          currentSubject = currentSubject[1].split('\\')
+          const foundSubject = currentSubject[currentSubject.length - 1] 
+          files.forEach(data => {
+            if (data.subject === foundSubject) {
+              data.topics.forEach( topic => {
+                toSend.push(topic.name)
+              })
+            }
+          })
+        }
+        
+        dispatch('onLs', toSend)
+      }
+
+      // default route
       cmdHistory.push(value)
       dispatch('enter', {cmd: value})
       value = ''
@@ -52,7 +136,7 @@
   input {
     border: none;
     background-color: #211c1b;
-    width: 80vw;
+    width: 70vw;
     color: #5f9980;
     caret-color: #5f9980;
   }
