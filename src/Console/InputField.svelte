@@ -11,15 +11,42 @@
 
   const files = [
     {
-      "subject": "Systemsikkerhed",
+      "subject": "System Security",
       "topics": [
         {
           "name": "System Security Overview",
-          "link": "https://docs.google.com/presentation/d/1miEDvFc71jOwPiI345qGRrjKSHzH7Liz4Uut7RuGYPk/edit?usp=sharing"
+          "link": "https://docs.google.com/presentation/d/1miEDvFc71jOwPiI345qGRrjKSHzH7Liz4Uut7RuGYPk/edit?usp=sharing",
+          "status": false
         },
         {
           "name": "System installation, hardening, monitoring & logging",
-          "link": "https://docs.google.com/presentation/d/1_xoBHzDVx9wHItEE8sTBrpGWcvY_P6If7FDfL4QqNPs/edit?usp=sharing"
+          "link": "https://docs.google.com/presentation/d/1_xoBHzDVx9wHItEE8sTBrpGWcvY_P6If7FDfL4QqNPs/edit?usp=sharing",
+          "status": false
+        },
+        {
+          "name": "Asymmetric encryption",
+          "link": "https://docs.google.com/presentation/d/1wzRok7sPOT-IqBOETVmxjz-2BY66iexq1aLXdPO_UPY/edit?usp=sharing",
+          "status": false
+        },
+        {
+          "name": "System Network Interface",
+          "link": "https://docs.google.com/presentation/d/1mII0wNj9pyxxgjWmYwho3E7OPsSq-gTAry6b0G5VoiU/edit?usp=sharing",
+          "status": false
+        },
+        {
+          "name": "Resource permissions",
+          "link": "https://docs.google.com/presentation/d/1P6CcG6vCCYbldA_or_ijpia_NW86Sor3Rc1RquHbQW4/edit?usp=sharing",
+          "status": false
+        },
+        {
+          "name": "User login & authentication",
+          "link": "https://docs.google.com/presentation/d/1dv5DEir2H8WkuVKEL_HjZHScTc5-T3-ioUEsMbhisoc/edit?usp=sharing",
+          "status": false
+        },
+        {
+          "name": "SW assisting in various system security tasks + system security planning",
+          "link": "https://docs.google.com/presentation/d/1MEPlJwu9gacZfBZuA_v7wvD96dyTFbLoPe8-ZWN5WtY/edit?usp=sharing",
+          "status": false
         }
       ]
     },
@@ -28,7 +55,18 @@
       "topics": [
         {
           "name": "idk yet",
-          "link": "www.google.com"
+          "link": "www.google.com",
+          "status": false
+        }
+      ]
+    },
+    {
+      "subject": "System & Network Security",
+      "topics": [
+        {
+          "name": "idk yet",
+          "link": "www.google.com",
+          "status": false
         }
       ]
     }
@@ -75,7 +113,11 @@
         let toSend = []
         if (!inSubject) {
           files.forEach(data => {
-            toSend.push(data.subject)
+            let tmp = {
+              name: data.subject,
+              status: true
+            }
+            toSend.push(tmp)
           })
         } else {
           let currentSubject = pwd.split(':')
@@ -84,7 +126,12 @@
           files.forEach(data => {
             if (data.subject === foundSubject) {
               data.topics.forEach( topic => {
-                toSend.push(topic.name)
+                let tmp = {
+                  name: topic.name,
+                  status: topic.status
+                }
+
+                toSend.push(tmp)
               })
             }
           })

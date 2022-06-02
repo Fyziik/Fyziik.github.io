@@ -7,7 +7,7 @@
     'changelog': [
       {
         'version': '0.1',
-        'details': 'Added console look $ functionality'
+        'details': 'Added console look & functionality'
       },
       {
         'version': '0.1.5',
@@ -20,6 +20,10 @@
       {
         'version': '0.3',
         'details': 'Added "file system", made cd & ls command functional'
+      },
+      {
+        'version': '0.4',
+        'details': 'Added last remaining links & topics for System Security, also added statuses'
       }
     ],
     'clear': 'clear',
@@ -80,10 +84,15 @@
 
     else if (cmd === 'ls') {
       let iteration = 0
+      elementToAdd = document.createElement('p')
+      elementToAdd.style.cssText += 'white-space: pre;  color: #FF971A;'
+      elementToAdd.textContent = `STATUS \t|\t ID \t|\t NAME`
+      div.append(elementToAdd)
       currentLs.forEach(file => {
         elementToAdd = document.createElement('p')
         elementToAdd.style.cssText += 'white-space: pre;  color: #FF971A;'
-        elementToAdd.textContent = `${iteration++} \t|\t ${file}`
+        const statusRendered = file.status ? '     ✔' : '     ❌'
+        elementToAdd.textContent = `${statusRendered} \t|\t ${iteration++} \t|\t ${file.name}`
         div.append(elementToAdd)
       })
     }
