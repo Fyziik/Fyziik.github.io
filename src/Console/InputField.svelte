@@ -54,8 +54,38 @@
       "subject": "Applied Cryptology",
       "topics": [
         {
-          "name": "idk yet",
-          "link": "www.google.com",
+          "name": "Symmetric Encryption",
+          "link": "https://docs.google.com/presentation/d/1k3YnGx1yRyr1YMMwDSWktu1zEHrz8tJfX3HGp-EhfU8/edit?usp=sharing",
+          "status": false
+        },
+        {
+          "name": "Asymmetric Encryption",
+          "link": "https://docs.google.com/presentation/d/1lA89xtVM9O6Bn5vVzdYb71DhAZ5S7hoJbtV1LoK-hLE/edit?usp=sharing",
+          "status": false
+        },
+        {
+          "name": "Hash Functions",
+          "link": "https://docs.google.com/presentation/d/1Umdi2kbOSeeHTsStrsNO0oDX7DCSDDnCSGvgj4li8JA/edit?usp=sharing",
+          "status": false
+        },
+        {
+          "name": "Key Exchange",
+          "link": "https://docs.google.com/presentation/d/1Fa5MxSX8Ic1ZB7aeACz8QuIQsh6q_qFoSIBLROcCfHs/edit?usp=sharing",
+          "status": false
+        },
+        {
+          "name": "MAC vs Digital Signatures",
+          "link": "https://docs.google.com/presentation/d/1_SLkZSndGbOIuM_48G8bVlR40fx7UkhRMSNZ4bTgXzo/edit?usp=sharing",
+          "status": false
+        },
+        {
+          "name": "PGP vs PKI",
+          "link": "https://docs.google.com/presentation/d/11jDEeh4Kbyx1ncwztuxZ966F2i18WykmidjLZclH-7g/edit?usp=sharing",
+          "status": false
+        },
+        {
+          "name": "TLS",
+          "link": "https://docs.google.com/presentation/d/1Ax4_LytgTk9Hj1CUyTRovXIJ9p7I2QOL0KQQrDmNCls/edit?usp=sharing",
           "status": false
         }
       ]
@@ -64,8 +94,38 @@
       "subject": "System & Network Security",
       "topics": [
         {
-          "name": "idk yet",
-          "link": "www.google.com",
+          "name": "Nmap",
+          "link": "https://docs.google.com/presentation/d/18UkNLoMJQuQHtQCeVwNMwNHpy1N024hgKAhehZQjKYs/edit?usp=sharing",
+          "status": false
+        },
+        {
+          "name": "Scapy",
+          "link": "https://docs.google.com/presentation/d/1CFWL-PaO9IbVFqpWVVLx7eeZ81ciU2OuHwmSftVqUwI/edit?usp=sharing",
+          "status": false
+        },
+        {
+          "name": "Netflow",
+          "link": "https://docs.google.com/presentation/d/1ItE5YhX_czxos0yamXDIg_FkjBglfSRg6i9AdTZjGRU/edit?usp=sharing",
+          "status": false
+        },
+        {
+          "name": "IDF / IPS",
+          "link": "https://docs.google.com/presentation/d/19r4w4dPqBcjlRHp0XL7AFZ_vQK3Zl4BRG3yuO9Wzftw/edit?usp=sharing",
+          "status": false
+        },
+        {
+          "name": "Network Segmentation",
+          "link": "https://docs.google.com/presentation/d/1EJiVf8eqM0LT_RYniVdnRKDEugnBVrUFRHM5Yy41iwE/edit?usp=sharing",
+          "status": false
+        },
+        {
+          "name": "Network Monitoring",
+          "link": "https://docs.google.com/presentation/d/18_8mvsoIP6Zu6hQhkSBMcaIgYnvnXArSZV7GoH5Cijg/edit?usp=sharing",
+          "status": false
+        },
+        {
+          "name": "SSL / TLS",
+          "link": "https://docs.google.com/presentation/d/1S7t7xl38A7nBt5nwZQ-KyKuL6exHoG9x5eH4r9KAL0k/edit?usp=sharing",
           "status": false
         }
       ]
